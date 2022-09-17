@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>creator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">s0</a> &gt; <a href="index.source.html" class="el_package">edu.brown.cs.student.csv</a> &gt; <span class="el_source">creator.java</span></div><h1>creator.java</h1><pre class="source lang-java linenums">package edu.brown.cs.student.csv;
+
+import java.util.List;
+
+<span class="nc" id="L5">public class creator&lt;T&gt; implements CreatorFromRow&lt;T&gt; {</span>
+  // Name              Age   Location
+  // [&quot;Charlotte Lee&quot;, &quot;20&quot;, &quot;Brown University, Providence, RI&quot;]
+
+  @Override
+  public T create(List&lt;String&gt; row) throws FactoryFailureException {
+    // Create an empty row object to contain your output
+<span class="nc" id="L12">    RowObject rowObject = new RowObject(0, 0, row.size());</span>
+
+    // Use a loop to go through each cell in the row
+<span class="nc bnc" id="L15" title="All 2 branches missed.">    for (int i = 0; i &lt; row.size(); i++) {</span>
+<span class="nc" id="L16">      String[] wordArray = row.get(i).trim().split(&quot; &quot;);</span>
+<span class="nc" id="L17">      int words = wordArray.length;</span>
+<span class="nc" id="L18">      rowObject.wordCount += words;</span>
+
+      // USe loop to go through each word in wordArray and count the characters
+<span class="nc bnc" id="L21" title="All 2 branches missed.">      for (int j = 0; j &lt; wordArray.length; j++) {</span>
+<span class="nc" id="L22">        int chars = wordArray[i].length();</span>
+<span class="nc" id="L23">        rowObject.charCount += chars;</span>
+      }
+    }
+
+<span class="nc" id="L27">    return (T) rowObject;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
